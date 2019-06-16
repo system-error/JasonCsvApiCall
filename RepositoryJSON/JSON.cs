@@ -13,7 +13,7 @@ namespace RepositoryJSON
     {
         public static List<LaureateSurname> readData()
         {
-           var Json =  Api.RequestJSON();
+            var Json = Api.RequestJSON();
             // Here after the connection the database we manipulate the csv string
             var lista = JsonConvert.DeserializeObject<RootObject>(Json);
             List<LaureateSurname> Surnames = new List<LaureateSurname>();

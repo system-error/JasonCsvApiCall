@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogic;
+using Model;
 
 namespace FrontView
 {
@@ -18,23 +19,20 @@ namespace FrontView
             InitializeComponent();
         }
 
-        private async void CsvData_Click(object sender, EventArgs e)
+        private void CsvData_Click(object sender, EventArgs e)
         {
-           bindingSource1.DataSource = await Query.DisplayAllTheData();
-
             dataGridView1.DataSource = bindingSource1;
 
-            
         }
 
-        private  void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            int item = (int) comboBox1.SelectedItem;
-            var fordatasource =  Query.DisplaySpecificYears(item);
-            
-            bindingSource1.DataSource = fordatasource;
-            dataGridView1.DataSource = bindingSource1;
+            int item = (int)comboBox1.SelectedItem;
+            var fordatasource = Query.DisplaySpecificYears(item);
+
+            bindingSource2.DataSource = fordatasource;
+            dataGridView1.DataSource = bindingSource2;
         }
 
         private async void CheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -49,12 +47,16 @@ namespace FrontView
             else
             {
                 comboBox1.Enabled = false;
-                bindingSource1.DataSource = await Query.DisplayAllTheData();
                 dataGridView1.DataSource = bindingSource1;
             }
-
-
             //checkBox1.Checked =  checkBox1.Checked ? comboBox1.Enabled = true : comboBox1.Enabled = false;
         }
+
+        private async void Form1_Load(object sender, EventArgs e)
+        {
+            bindingSource1.DataSource = await Query.DisplayAllTheData();
+        }
+
+
     }
 }
