@@ -22,7 +22,6 @@ namespace FrontView
         private void CsvData_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = bindingSource1;
-
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)

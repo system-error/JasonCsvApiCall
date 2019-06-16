@@ -17,8 +17,7 @@ namespace BusinessLogic
         static List<CsvData> allTheData = CSV.readData();
 
         public static async Task<int[]> CollectTheYears()
-        {
-
+        { 
             List<Task<int>> taskYears = new List<Task<int>>();
             List<int> years = new List<int>();
             foreach (var item in allTheData)
