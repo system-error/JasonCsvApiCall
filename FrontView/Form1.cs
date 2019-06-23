@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,13 +24,14 @@ namespace FrontView
         private void CsvData_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = bindingSource1;
+            
         }
 
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private  void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            int item = (int)comboBox1.SelectedItem;
-            var fordatasource = Query.DisplaySpecificYears(item);
+            int item = (int) comboBox1.SelectedItem;
+            var fordatasource =  Query.DisplaySpecificYears(item);
 
             bindingSource2.DataSource = fordatasource;
             dataGridView1.DataSource = bindingSource2;
@@ -39,9 +42,9 @@ namespace FrontView
             if (checkBox1.Checked)
             {
                 var years = await Query.CollectTheYears();
-                comboBox1.DataSource = years;
-                comboBox1.DisplayMember = "years";
-                comboBox1.Enabled = true;
+                    comboBox1.DataSource = years;
+                    comboBox1.DisplayMember = "years";
+                    comboBox1.Enabled = true;
             }
             else
             {
@@ -56,6 +59,20 @@ namespace FrontView
             bindingSource1.DataSource = await Query.DisplayAllTheData();
         }
 
+        private void JsonData_Click(object sender, EventArgs e)
+        {
+            var list = QueryJson.takeit();
 
+            dataGridView1.DataSource = list;
+            
+
+            
+
+
+
+
+        }
+
+        
     }
 }

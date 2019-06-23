@@ -36,9 +36,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.JsonData = new System.Windows.Forms.Button();
+            this.bindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -55,7 +58,7 @@
             this.csvData.Name = "csvData";
             this.csvData.Size = new System.Drawing.Size(175, 23);
             this.csvData.TabIndex = 1;
-            this.csvData.Text = "Callcsv";
+            this.csvData.Text = "Call-Csv";
             this.csvData.UseVisualStyleBackColor = true;
             this.csvData.Click += new System.EventHandler(this.CsvData_Click);
             // 
@@ -93,11 +96,22 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
+            // JsonData
+            // 
+            this.JsonData.Location = new System.Drawing.Point(12, 89);
+            this.JsonData.Name = "JsonData";
+            this.JsonData.Size = new System.Drawing.Size(175, 23);
+            this.JsonData.TabIndex = 6;
+            this.JsonData.Text = "Call-Json";
+            this.JsonData.UseVisualStyleBackColor = true;
+            this.JsonData.Click += new System.EventHandler(this.JsonData_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 450);
+            this.Controls.Add(this.JsonData);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox1);
@@ -109,6 +123,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -123,5 +138,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.BindingSource bindingSource2;
+        private System.Windows.Forms.Button JsonData;
+        private System.Windows.Forms.BindingSource bindingSource3;
     }
 }
+

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -11,21 +13,67 @@ namespace RepositoryJSON
 {
     public class JSON
     {
-        public static List<LaureateSurname> readData()
-        {
-            var Json = Api.RequestJSON();
-            // Here after the connection the database we manipulate the csv string
-            var lista = JsonConvert.DeserializeObject<RootObject>(Json);
-            List<LaureateSurname> Surnames = new List<LaureateSurname>();
+        public static RootObject list = JsonConvert.DeserializeObject<RootObject>(Api.RequestJSON());
+        ////////////////////////////////////////////////////////////////
 
-            foreach (var item in lista.prizes)
-            {
-                Console.WriteLine(item.laureates[0].surname);
-                LaureateSurname Ls = new LaureateSurname(item.laureates[0].surname);
-                Surnames.Add(Ls);
-            }
 
-            return Surnames;
-        }
+        
+
+        //public static List<Laureate> TakeTheLaureates()
+        //{
+
+        //    // Here after the connection the database we manipulate the json string
+
+        //    List<Laureate> Laureates = new List<Laureate>();
+
+        //    foreach (var item in list.prizes)
+        //    {
+        //        for (int i = 0; i < item.Laureates.Count; i++)
+        //        {
+        //            Laureate Ls = new Laureate(Convert.ToInt32(item.Laureates[i].Id),item.Laureates[i].FirstName,item.Laureates[i].SurName,item.Laureates[i].Motivation,item.Laureates[i].Share);
+        //            Laureates.Add(Ls);
+        //        }
+        //    }
+
+        //    return Laureates;
+        //}
+
+        //public static List<Prize> TakeThePrizes()
+        //{
+
+        //    // Here after the connection the database we manipulate the json string
+
+        //    List<Prize> prizes = new List<Prize>();
+
+        //    foreach (var item in list.prizes)
+        //    {
+        //        Prize pr = new Prize(item.Year,item.Category,item.OverallMotivation, TakeTheLaureates());
+        //        prizes.Add(pr);
+
+        //    }
+
+        //    return prizes;
+        //}
+
+        //public static List<int> TakeTheYears()
+        //{
+
+        //    // Here after the connection the database we manipulate the json string
+
+        //    List<int> Years = new List<int>();
+
+        //    foreach (var item in list.prizes)
+        //    {
+        //        Console.WriteLine(item.year);
+
+
+        //        Years.Add(Convert.ToInt32(item.year));
+        //    }
+
+        //    return Years;
+        //}
+
+        /////////////////////////////////////////////////////////////////////////////////
+
     }
 }

@@ -16,23 +16,23 @@ namespace RepositoryCsv
         public static List<CsvData> readData()
         {
             // Here after the connection the database we manipulate the csv string
-
+            
             List<CsvData> dataFromCsv = new List<CsvData>();
-            for (int i = 1; i < requested.Count; i++)
-            {
-                string[] p = requested[i].Split(',');
-                if (i == 56 || i == 57)
+                for (int i = 1; i < requested.Count; i++)
                 {
-                    continue;
-                }
-                else
-                {
-                    CsvData data = new CsvData(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7]); //30
+                    string[] p = requested[i].Split(',');
+                    if (i == 56 || i == 57)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        CsvData data = new CsvData(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7]); //30
 
-                    dataFromCsv.Add(data);
+                        dataFromCsv.Add(data);
+                    }
                 }
-            }
-            return dataFromCsv;
+                return dataFromCsv;
         }
     }
 }

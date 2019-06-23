@@ -17,48 +17,50 @@ namespace Experiments
 {
     class Program
     {
+       
+
         static void Main(string[] args)
         {
-            //string responseFromServer;
-            //// Create a request for the URL.   
-            //WebRequest request = WebRequest.Create(
-            //    "http://api.nobelprize.org/v1/prize.csv?");
-            //// If required by the server, set the credentials.  
-            //request.Credentials = CredentialCache.DefaultCredentials;
+            string responseFromServer;
+            // Create a request for the URL.   
+            WebRequest request = WebRequest.Create(
+                "http://api.nobelprize.org/v1/prize.json?");
+            // If required by the server, set the credentials.  
+            request.Credentials = CredentialCache.DefaultCredentials;
 
-            //// Get the response.  
-            //WebResponse response = request.GetResponse();
-            //// Display the status.  
-            //Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+            // Get the response.  
+            WebResponse response = request.GetResponse();
+            // Display the status.  
+            Console.WriteLine(((HttpWebResponse)response).StatusDescription);
 
-            //// Get the stream containing content returned by the server. 
-            //// The using block ensures the stream is automatically closed. 
-            //using (Stream dataStream = response.GetResponseStream())
-            //{
-            //    // Open the stream using a StreamReader for easy access.  
-            //    StreamReader reader = new StreamReader(dataStream);
-            //    // Read the content.  
-            //    responseFromServer = reader.ReadToEnd();
-            //    // Display the content.  
-            //    //Console.WriteLine(responseFromServer);
-            //}
+            // Get the stream containing content returned by the server. 
+            // The using block ensures the stream is automatically closed. 
+            using (Stream dataStream = response.GetResponseStream())
+            {
+                // Open the stream using a StreamReader for easy access.  
+                StreamReader reader = new StreamReader(dataStream);
+                // Read the content.  
+                responseFromServer = reader.ReadToEnd();
+                // Display the content.  
+                //Console.WriteLine(responseFromServer);
+            }
 
-            //// Close the response.  
-            //response.Close();
+            // Close the response.  
+            response.Close();
 
             //-----------------------------------------------------------------------------
-            string str = "My name is, Christos,test";
-            string[] split = str.Split(',');
+            //string str = "My name is, Christos,test";
+            //string[] split = str.Split(',');
 
-            for (int i = 0; i < split.Length; i++)
-            {
-                
-            }
-            
-            foreach (var item in split)
-            {
-                Console.WriteLine(item);
-            }
+            //for (int i = 0; i < split.Length; i++)
+            //{
+
+            //}
+
+            //foreach (var item in split)
+            //{
+            //    Console.WriteLine(item);
+            //}
             //var lista = DeserializeCsv.Decerialize();
             //foreach (var item in lista)
             //{
@@ -80,8 +82,60 @@ namespace Experiments
             //    }
             //}
 
+            var list = JsonConvert.DeserializeObject<RootObject>(responseFromServer);
+
+            
+            foreach (var item in list.prizes)
+            {
+                Console.Write(item.Year);
+                Console.Write(item.Category);
+                foreach (var itemLaureate in item.Laureates)
+                {
+                    Console.WriteLine(itemLaureate.FirstName);
+                    Console.WriteLine(itemLaureate.SurName);
+                    Console.WriteLine(itemLaureate.Id);
+                }
+                Console.Write(item.OverallMotivation);
+            }
+
+                
+
+                
+
+
+            
+
+
+
+
             //var lista = JsonConvert.DeserializeObject<RootObject>(responseFromServer);
-            //List<LaureateSurname> Surnames = new List<LaureateSurname>();
+            //List<Laureate> general = new List<Laureate>();
+            //List<string> Years = new List<string>();
+
+
+
+
+            //    List<Prize> list = new List<Prize>();
+
+            //    for (int i = 0; i < lista.prizes.Count; i++)
+            //    {
+            //        list.Add(lista.prizes[i]);
+
+            //    }
+
+            //    foreach (var item in list)
+            //    {
+            //        Console.WriteLine(item.Laureates);
+            //        for (int i = 0; i < item.Laureates.Count; i++)
+            //        {
+            //            general.Add(item.Laureates[i]);
+            //        }
+
+            //    }
+
+
+
+
 
             //foreach (var item in lista.prizes)
             //{
@@ -94,6 +148,48 @@ namespace Experiments
             //    //Surnames.Add(Ls);
             //}
 
+            //List<CsvData> dataFromCsv = new List<CsvData>();
+            //for (int i = 1; i < requested.Count; i++)
+            //{
+            //    string[] p = requested[i].Split(',');
+            //    if (i == 56 || i == 57)
+            //    {
+            //        continue;
+            //    }
+            //    else
+            //    {
+            //        CsvData data = new CsvData(p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7]); //30
+
+            //        dataFromCsv.Add(data);
+            //    }
+            //}
+
+
+
+
+            //foreach (var item in lista.prizes)
+            //{
+            //    Console.WriteLine(item);
+
+
+            //    Years.Add(item);
+            //}
+
+            //foreach (var item in Years)
+            //{
+            //    Console.WriteLine();
+            //}
+
+
+            //var yearsGrouped = Years. GroupBy(x => x)
+            //    .Where(g => g.Count() > 1)
+            //    .Select(y => y.Key)
+            //    .ToList();
+
+            //foreach (var item in yearsGrouped)
+            //{
+            //    Console.WriteLine(item);
+            //}
         }
 
         class LaureateSurname
@@ -103,6 +199,16 @@ namespace Experiments
             public LaureateSurname(string surname)
             {
                 Surname = surname;
+            }
+        }
+
+        class PrizesYears
+        {
+            private string Year { get; }
+
+            public PrizesYears(string year)
+            {
+                Year = year;
             }
         }
 

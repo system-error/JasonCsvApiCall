@@ -9,19 +9,36 @@ namespace Model
 {
     public class Laureate
     {
-        public int id { get; set; }
-        public string firstname { get; set; }
-        public string surname { get; set; }
-        public string motivation { get; set; }
-        public string share { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string SurName { get; set; }
+        public string Motivation { get; set; }
+        public string Share { get; set; }
+
+        public Laureate(int id,string firstName,string surName,string motivation,string share)
+        {
+            Id = id;
+            FirstName = firstName;
+            SurName = surName;
+            Motivation = motivation;
+            Share = share;
+        }
     }
 
     public class Prize
     {
-        public string year { get; set; }
-        public string category { get; set; }
-        public string overallMotivation { get; set; }
-        public List<Laureate> laureates { get; set; }
+        public string Year { get; set; }
+        public string Category { get; set; }
+        public string OverallMotivation { get; set; }
+        public List<Laureate> Laureates { get; set; }
+
+        public Prize(string year,string category,string overallMotivation, List<Laureate> laureates)
+        {
+            Year = year;
+            Category = category;
+            OverallMotivation = overallMotivation;
+            Laureates = laureates;
+        }
     }
 
     public class RootObject
