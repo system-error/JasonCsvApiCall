@@ -81,9 +81,9 @@ namespace BusinessLogic
     public class QueryJson
     {
 
-        public static List<Prize> takeit()
+        public static List<SuperPrize> takeit()
         {
-            return JSON.list.prizes;
+            return JSON.TakeAll();
         }
 
         //static List<CsvData> allTheData = CSV.readData();

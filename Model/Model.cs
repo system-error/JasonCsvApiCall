@@ -7,6 +7,29 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    public class SuperPrize
+    {
+        public string Year { get; set; }
+        public string Category { get; set; }
+        public string OverallMotivation { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string SurName { get; set; }
+        public string Motivation { get; set; }
+        public string Share { get; set; }
+
+        public SuperPrize(string year, string category, string overallMotivation, int id, string firstName, string surName, string motivation, string share)
+        {
+            Year = year;
+            Category = category;
+            OverallMotivation = overallMotivation;
+            Id = id;
+            FirstName = firstName;
+            SurName = surName;
+            Motivation = motivation;
+            Share = share;
+        }
+    }
     public class Laureate
     {
         public int Id { get; set; }

@@ -15,9 +15,21 @@ namespace RepositoryJSON
     {
         public static RootObject list = JsonConvert.DeserializeObject<RootObject>(Api.RequestJSON());
         ////////////////////////////////////////////////////////////////
+        public static List<SuperPrize> TakeAll()
+        {
+            List<SuperPrize> sp = new List<SuperPrize>();
+            foreach (var item in list.prizes)
+            {
+                for (int i = 0; i < item.Laureates.Count; i++)
+                {
+                    SuperPrize t = new SuperPrize(item.Year, item.Category, item.OverallMotivation, Convert.ToInt32(item.Laureates[i].Id), item.Laureates[i].FirstName, item.Laureates[i].SurName, item.Laureates[i].Motivation, item.Laureates[i].Share);
+                    sp.Add(t);
+                }
+            }
+            return sp;
+        }
 
 
-        
 
         //public static List<Laureate> TakeTheLaureates()
         //{
